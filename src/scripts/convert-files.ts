@@ -8,11 +8,9 @@ import {
 export const convertFiles = async () => {
   try {
     const files = await loadAllFiles();
-    const recentUnconvertedFiles = files
-      .filter(
-        (f) => f.fileExtension === "wav" && !hasBeenConverted(files, f.mixName)
-      )
-      .slice(0, 5);
+    const recentUnconvertedFiles = files.filter(
+      (f) => f.fileExtension === "wav" && !hasBeenConverted(files, f.mixName)
+    );
     if (recentUnconvertedFiles.length === 0) {
       print("No unconverted files found.");
       return;

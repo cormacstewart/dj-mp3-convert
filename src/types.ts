@@ -1,8 +1,3 @@
-export type RenameFileData = {
-  file: FileData;
-  newName: string;
-};
-
 export class FileData {
   filePath: string;
   createdAt: Date;
