@@ -55,18 +55,21 @@ export const getNewFiles = (files: FileData[]): FileData[] => {
 
 export const getPracticeFileCount = (files: FileData[]): number => {
   print("Loading practice count...");
-  const i = files.findIndex((f) => isNumeric(f.fileName));
+  const i = files.findIndex(
+    (f) => f.fileExtension === "wav" && isNumeric(f.fileName)
+  );
   print("Practice count: " + files[i].fileName + "\n");
   return +files[i].fileName;
 };
 
 export const renameNewFiles = async (files: FileData[]) => {
   try {
-    const newFiles = getNewFiles(files);
+    const filteredFiles = files.filter((f) => f.fileExtension !== "mp3");
+    const newFiles = getNewFiles(filteredFiles);
     if (newFiles.length === 0) return;
     newFiles.reverse();
     const renameFileData: RenameFileData[] = [];
-    let nameCount = getPracticeFileCount(files) + 1;
+    let nameCount = getPracticeFileCount(filteredFiles) + 1;
     for (let i = 0; i < newFiles.length; i++) {
       const file = newFiles[i];
       const fileIndex = renameFileData.findIndex(
