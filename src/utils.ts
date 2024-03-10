@@ -47,6 +47,7 @@ export const renameFile = async (oldName: string, newName: string) => {
     `${practiceSetsFilePath}\\${oldName}`,
     `${practiceSetsFilePath}\\${newName}`
   );
+  print(oldName + " renamed to: " + newName);
 };
 
 export const convertWavToMp3 = async (file: FileData) => {

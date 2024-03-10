@@ -34,8 +34,6 @@ export const renameNewFiles = async (files: FileData[]) => {
         );
       })
     );
-    print(`${renameFileData.length} files renamed.`);
-    print("Next practice #: " + nameCount);
   } catch (error) {
     print(error);
   }
